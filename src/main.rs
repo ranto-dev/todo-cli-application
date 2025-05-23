@@ -7,6 +7,7 @@ mod user_asked;
 
 #[derive(Debug, Clone)]
 struct Todo {
+    id: i32,
     title: String,
     content: String
 }
@@ -25,7 +26,7 @@ fn main() {
                 display_todo_list(todos.clone());
             },
             Choice::Create => {
-                todos.push(create_todo());
+                todos.push(create_todo(todos.clone().len() as i32));
                 println!("Todo créée avec success!")
             },
             Choice::Update => println!("You choice update"),
