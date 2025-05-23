@@ -36,8 +36,6 @@ pub fn edit_todo_by_id(todos: &mut Vec<Todo>) -> Vec<Todo> {
         todo_id_to_edit = input_i32();
     }
 
-    println!("Finished! id: {}", todo_id_to_edit);
-
     for todo in &mut * todos {
         if todo.id == todo_id_to_edit {
             println!("-- Update todo id: {} --", todo.id);
@@ -50,4 +48,24 @@ pub fn edit_todo_by_id(todos: &mut Vec<Todo>) -> Vec<Todo> {
 
     let new_todo: Vec<Todo> = (*todos.clone()).to_vec();
     return new_todo.clone();
+}
+
+pub fn remove_todo_by_id(todos: &mut Vec<Todo>) {
+    let len_todos: i32 = todos.len() as i32;
+    let mut todo_id_to_remove: i32 = 0;
+
+    println!("{}", len_todos);
+
+    if len_todos < 1 {
+        println!("Vous n'avez pas encore de todos");
+    }
+
+    while todo_id_to_remove < 1 || todo_id_to_remove > len_todos {
+        println!("You want to remove todo at id?");
+        todo_id_to_remove = input_i32();
+    }
+
+    println!("{}", todo_id_to_remove);
+
+    todos.remove((todo_id_to_remove as usize) - 1);
 }

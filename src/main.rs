@@ -1,4 +1,4 @@
-use todo::{create_todo, display_todo_list, edit_todo_by_id};
+use todo::{create_todo, display_todo_list, edit_todo_by_id, remove_todo_by_id};
 use user_asked::{user_asked_operation, user_asked_to_continue_proram, Choice};
 
 mod todo;
@@ -32,7 +32,9 @@ fn main() {
             Choice::Update => {
                 todos = edit_todo_by_id(&mut todos);
             },
-            Choice::Delete => println!("You choice Delete")
+            Choice::Delete => {
+                remove_todo_by_id(&mut todos);
+            }
         }
         continue_program = user_asked_to_continue_proram();
     }
